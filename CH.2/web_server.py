@@ -14,14 +14,7 @@ while True:
         f = open(filename[1:])
         outputdata = f.read()
         # Send a valid HTTP header
-        header = """
-         HTTP/1.1 200 OK
-        Connection: close
-        Content-Length: %d
-        Content-Type: text/html
-
-        
-        """ % len(outputdata)
+        header = ' HTTP/1.1 200 OK\nConnection: close\nContent-Type: text/html\nContent-Length: %d\n\n' % (len(outputdata))
         connectionSocket.send(header.encode())
 
         for i in range(0,len(outputdata)):
